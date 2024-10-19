@@ -108,6 +108,8 @@ async function nextStep() {
     return;
   }
   _CurrentStep.nextStep = _CurrentStep.currentStep += 1;
+  console.log(_CurrentStep);
+  console.log('-----');
   updatePosition();
 }
 
