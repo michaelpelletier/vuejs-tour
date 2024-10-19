@@ -102,11 +102,14 @@ async function nextStep() {
   console.log(_CurrentStep);
   await beforeStep(_CurrentStep.nextStep);
   _CurrentStep.lastStep = _CurrentStep.currentStep;
+  console.log(_CurrentStep);
   _CurrentStep.currentStep += 1;
+  console.log(_CurrentStep);
   if(_CurrentStep.currentStep > props.steps.length -1){
     endTour();
     return;
   }
+  console.log(_CurrentStep);
   _CurrentStep.nextStep = _CurrentStep.currentStep += 1;
   console.log(_CurrentStep);
   console.log('-----');
