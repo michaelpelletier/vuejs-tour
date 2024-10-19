@@ -49,6 +49,7 @@ const emit = defineEmits<{
   onTourStep: []
 }>()
 defineExpose({
+  step: _CurrentStep,
   startTour,
   nextStep,
   lastStep,
@@ -98,21 +99,22 @@ function resetTour(restart: boolean): void{
 }
 
 async function nextStep() {
+  console.log(_CurrentStep);
   await beforeStep(_CurrentStep.nextStep);
   _CurrentStep.lastStep = _CurrentStep.currentStep;
-  _CurrentStep.currentStep++;
+  _CurrentStep.currentStep += 1;
   if(_CurrentStep.currentStep > props.steps.length -1){
     endTour();
     return;
   }
-  _CurrentStep.nextStep = _CurrentStep.currentStep++;
+  _CurrentStep.nextStep = _CurrentStep.currentStep += 1;
   updatePosition();
 }
 
 async function lastStep() {
   await beforeStep(_CurrentStep.lastStep);
   _CurrentStep.currentStep = _CurrentStep.lastStep;
-  _CurrentStep.lastStep--;
+  _CurrentStep.lastStep -= 1;
   if(_CurrentStep.lastStep === -1){
     _CurrentStep.lastStep = 0;
   }
@@ -120,7 +122,7 @@ async function lastStep() {
     endTour();
     return;
   }
-  _CurrentStep.nextStep = _CurrentStep.currentStep++;
+  _CurrentStep.nextStep = _CurrentStep.currentStep += 1;
   updatePosition();
 }
 
@@ -130,8 +132,8 @@ function endTour(): void{
   emit("onTourEnd");
 }
 
-function goToStep(step: number): void{
-  beforeStep(step);
+async function goToStep(step: number) {
+  await beforeStep(step);
   _CurrentStep.currentStep = step;
   _CurrentStep.lastStep = step - 1;
   if(_CurrentStep.lastStep === -1) _CurrentStep.lastStep = 0;
