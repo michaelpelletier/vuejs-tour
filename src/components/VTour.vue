@@ -85,7 +85,7 @@ function startTour(): void{
 
 function stopTour(): void{
   if(props.backdrop || _CurrentStep.getLastStep.backdrop) document.querySelector('#vjt-backdrop')!.setAttribute('data-hidden', '');
-  if(props.highlight || _CurrentStep.getLastStep.highlight) document.querySelectorAll('.vjt-highlight').forEach((element) => element.classList.remove('vjt-highlight'));
+  if(props.highlight || _CurrentStep.getLastStep.highlight) document.querySelectorAll('.vjt-highlight').forEach((element) => element.classList?.remove('vjt-highlight'));
   _Tooltip.value!.setAttribute('data-hidden', '');
 }
 
@@ -176,7 +176,7 @@ async function updatePosition(): Promise<void>{
 function updateHighlight(): void{
   document.querySelectorAll('.vjt-highlight').forEach((element) => element?.classList.remove('vjt-highlight'));
   if(!props.highlight && !_CurrentStep.getCurrentStep.highlight) return;
-  (document.querySelector(`${_CurrentStep.getCurrentStep.target}`) as HTMLElement).classList.add('vjt-highlight');
+  (document.querySelector(`${_CurrentStep.getCurrentStep.target}`) as HTMLElement)?.classList.add('vjt-highlight');
   getClipPath.value = getClipPathValues('.vjt-highlight');
 }
 
