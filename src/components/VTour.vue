@@ -174,7 +174,7 @@ async function updatePosition(): Promise<void>{
 }
 
 function updateHighlight(): void{
-  document.querySelectorAll('.vjt-highlight').forEach((element) => element.classList.remove('vjt-highlight'));
+  document.querySelectorAll('.vjt-highlight').forEach((element) => element?.classList.remove('vjt-highlight'));
   if(!props.highlight && !_CurrentStep.getCurrentStep.highlight) return;
   (document.querySelector(`${_CurrentStep.getCurrentStep.target}`) as HTMLElement).classList.add('vjt-highlight');
   getClipPath.value = getClipPathValues('.vjt-highlight');
