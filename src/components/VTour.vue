@@ -99,7 +99,9 @@ function resetTour(restart: boolean): void{
 }
 
 async function nextStep() {
-  if (_CurrentStep.currentStep <= props.steps.length) {
+  console.log(_CurrentStep.currentStep)
+  console.log(props.steps.length);
+  if (_CurrentStep.currentStep <= props.steps.length + 1) {
     await beforeStep(_CurrentStep.nextStep);
   }
   _CurrentStep.lastStep = _CurrentStep.currentStep;
