@@ -145,7 +145,7 @@ async function goToStep(step: number) {
 }
 
 async function beforeStep(step: number) {
-  await props.steps[step].onBefore?.();
+  await props.steps[step]?.onBefore?.();
 }
 
 async function updatePosition(): Promise<void>{
