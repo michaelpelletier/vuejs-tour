@@ -143,8 +143,6 @@ async function goToStep(step: number) {
 }
 
 async function beforeStep(step: number) {
-  console.log(step);
-  console.log(props.steps);
   await props.steps[step]?.onBefore?.();
 }
 
